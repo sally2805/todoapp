@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/onboardingscreentwo.dart';
+import 'package:todoapp/onboardingscreenthree.dart';
 
-class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
+class Screen2 extends StatefulWidget {
+  const Screen2({super.key});
 
+  @override
+  State<Screen2> createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,29 +17,26 @@ class Screen1 extends StatelessWidget {
          
           children:[ 
             SizedBox(height: 60),
-            Text('start organizing your task',
+            Text('customizing & organizing your task',
              style: TextStyle(fontSize: 30,
              fontWeight: FontWeight.bold,
              color: Colors.black),
           textAlign: TextAlign.center,
           ),
           SizedBox(height: 20),
-          Image.asset('assets/image/undraw_Calendar_re_ki49.png',height: 200,width: 200,
+          Image.asset('assets/image/undraw_completed_tasks_vs6q.png',height: 200,width: 200,
           fit: BoxFit.cover,
           ),
-          SizedBox(height: 20),
-          Text('Welcome to TODO', style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,),
-          textAlign: TextAlign.left,
-          ),
+          
            SizedBox(height: 20),
-          Text('your daily task organized,that keep you on track', style: TextStyle(fontSize: 10,color: Colors.black,),
+          Text('add your task and daily tasks', style: TextStyle(fontSize: 10,color: Colors.black,),
           textAlign: TextAlign.left,
           ),
           SizedBox(height: 400),
           Center(
             child:ElevatedButton(child: Text('contaious'),
               onPressed: (){
-                Navigator.push(context,MaterialPageRoute(builder: (context)=>Screen2()), 
+                Navigator.push(context,MaterialPageRoute(builder: (context)=>screen3()), 
                 );
               },
             )
@@ -46,3 +48,4 @@ class Screen1 extends StatelessWidget {
     );
   }
 }
+
