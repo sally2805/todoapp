@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/entry_point.dart';
 import 'package:todoapp/onboardingscreen.dart';
 
-void main(List<String> args) {
+void main() {
   runApp(MyApp());
 }
 
@@ -12,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     );
   }
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (builder) => EntryPoint()));
+          context, MaterialPageRoute(builder: (builder) => Screen1()));
     });
   }
 
