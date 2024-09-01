@@ -31,23 +31,27 @@ class _EntryPointState extends State<EntryPoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.amber,
+        onPressed: () {
         /* 
           here will be to add the task logic 
            */
         setState(() {
           log('button pressed');
         });
-      }),
+      },child: Text('$index'),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: bottomIconList,
         activeIndex: index,
+        backgroundColor:Colors.blue ,
         gapLocation: GapLocation.center,
-        activeColor: Colors.blue,
-        inactiveColor: Colors.grey,
+        height: 100,
+        activeColor: Colors.white,
+        inactiveColor: Colors.black,
         splashColor: Colors.blueAccent,
-        notchSmoothness: NotchSmoothness.softEdge,
+        notchSmoothness: NotchSmoothness.smoothEdge,
         onTap: (tap) {
           setState(() {
             index = tap;
