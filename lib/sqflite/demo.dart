@@ -50,6 +50,14 @@ password TEXT NOT NULL
       'tabtab',
       {'username': User, 'password': Pass},
       where: 'id = $Id',
+      /* 
+       where: 'id = ?',
+       // بالعربي بيقوله العامود ده القيمة اللي جواه هتتبدل بالقيمة اللي هتديها في whereargs
+      // this means that the id column will update it's data
+      whereArgs: [Id],
+      // this means that the id will be changed using this id parameter
+      //where: 'id = $Id', this is not a vaild one
+      */
     );
   }
 }
