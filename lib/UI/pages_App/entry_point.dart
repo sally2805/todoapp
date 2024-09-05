@@ -2,10 +2,11 @@ import 'dart:developer';
 
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:todoapp/home.dart';
-import 'package:todoapp/notification.dart';
-import 'package:todoapp/profile.dart';
-import 'package:todoapp/settings.dart';
+import 'package:todoapp/ui.dart';
+import 'home.dart';
+import 'notification.dart';
+import 'profile.dart';
+import 'settings.dart';
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({super.key});
@@ -34,9 +35,13 @@ class _EntryPointState extends State<EntryPoint> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amber,
         onPressed: () {
-        /* 
-          here will be to add the task logic 
-           */
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AddTodoDialog();
+            },
+          );
+
         setState(() {
           log('button pressed');
         });

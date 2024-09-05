@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/onboardingscreen.dart';
+
+import 'UI/onboardingscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,3 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+
+
+

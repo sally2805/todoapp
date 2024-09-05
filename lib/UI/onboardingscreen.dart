@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/signup.dart';
+import 'signup.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
