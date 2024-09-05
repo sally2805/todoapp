@@ -60,4 +60,17 @@ password TEXT NOT NULL
       */
     );
   }
+
+  Future<int> delete(
+    String Id,
+    String User,
+    String Pass,
+  ) async {
+    final db = await _database1!.database;
+    return await db.delete(
+      'tabtab',
+      where: 'id = ?',
+      whereArgs: [Id],
+    );
+  }
 }
