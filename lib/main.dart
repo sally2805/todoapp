@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todoapp/Bloc_todo/bloc.dart';
+import 'package:todoapp/Data%20Base_todo/dbhelper.dart';
+import 'package:todoapp/UI/pages_App/entry_point.dart';
 
 import 'UI/onboardingscreen.dart';
 
@@ -7,13 +11,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  DatabaseHelper db = DatabaseHelper.init();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return BlocProvider(
+      create: (context) => TodoBloc(db),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }
@@ -31,8 +37,15 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (builder) => Screen1()));
+      MyApp A = MyApp();
+      
+      if (A.db.queryUser() == null) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => Screen1()));
+      }else{
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => EntryPoint()));
+      }
     });
   }
 
@@ -49,7 +62,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-
-
-

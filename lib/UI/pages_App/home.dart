@@ -63,6 +63,69 @@ class _HomescreenState extends State<Homescreen> {
               },
             ),
           ),
+          Expanded(
+            flex: 3,
+            child: BlocBuilder<TodoBloc, TodoState>(
+              builder: (context, state) {
+                if (state is TodoLoading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is TodoFilteredByDate) {
+                  final todos = state.todos;
+                  return ListView.builder(
+                    itemCount: todos.length,
+                    itemBuilder: (context, index) {
+                      final todo = todos[index];
+                      return Card(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                todo.title,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                'Description: ${todo.description}',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                'Category: ${todo.category.toString().split('.').last}',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                'Date: ${todo.date.day}/${todo.date.month}/${todo.date.year}',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(height: 5),
+                              Text(_formatTime(
+                                  todo.startTime)), // Format start time
+                              Text(
+                                  _formatTime(todo.endTime)), // Format end time
+                            ],
+                          ),
+                        ),
+                      );
+
+                     
+                    },
+                  );
+                } else if (state is TodoError) {
+                  return Center(child: Text(state.message));
+                } else {
+                  return Center(child: Text('Select a date to see tasks'));
+                }
+              },
+            ),
+          )
           
           ])
         );

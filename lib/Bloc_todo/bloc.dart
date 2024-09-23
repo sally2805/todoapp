@@ -8,6 +8,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   final DatabaseHelper db;
 
   TodoBloc(this.db) : super(TodoInitial()) {
+    
     on<LoadTodos>((event, emit) async {
       emit(TodoLoading());
       try {

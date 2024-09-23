@@ -45,7 +45,7 @@ class _EntryPointState extends State<EntryPoint> {
         setState(() {
           log('button pressed');
         });
-      },child: Text('$index'),),
+      },child: Icon(Icons.add),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: bottomIconList,
